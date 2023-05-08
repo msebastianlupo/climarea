@@ -1,4 +1,4 @@
-# climarea - Una app más de clima
+# Climarea - una app más de clima
  
 ## Datos del alumno
 Nombre: Matías Godoy
