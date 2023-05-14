@@ -1,18 +1,32 @@
 'use strict'
 
+/**
+ * crea ventanas modal
+ */
 class Modal {
+    /**
+     * 
+     * @param {string} titulo nombre del título por defecto
+     */
     constructor(titulo){
         this.titulo = titulo;
-        this.confirmacion = false;
     }
 
+    /**
+     * crea una capa que bloquea el sitio hasta finalizar alguna operación. debe ser removida posteriormente con quitarModal()
+     */
     mostrarCarga(){
         let div = document.createElement("div");
         div.id = "modal-cargando";
         document.body.append(div);
     }
 
-    mostrarInfo(titulo = this.mensaje, info){
+    /**
+     * crea un diálogo de advertencia al usuario
+     * @param {string} titulo si no se envía el argumento, usará el predeterminado
+     * @param {string} info detalles de la operación
+     */
+    mostrarInfo(titulo = this.titulo, info = "Aceptá para continuar"){
         let div = document.createElement("div");
         let divCaja = document.createElement("div");
         let h3 = document.createElement("h3");

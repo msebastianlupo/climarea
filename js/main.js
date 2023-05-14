@@ -20,7 +20,7 @@ let datosLocal = localStorage.getItem("datos");
 const modal = new Modal("Información");
 
 info.addEventListener("click", () =>{
-    modal.mostrarInfo("Climarea", "Una app más de clima\n© Matías Godoy. v23.05.14");
+    modal.mostrarInfo("Climarea", "Una app más de clima.\n© Matías Godoy. v23.05.14");
 });
 
 btnCiudad.addEventListener("click", (e) => {    
@@ -33,7 +33,8 @@ btnCiudad.addEventListener("click", (e) => {
         })
         .then(json => {
             modal.quitarModal();
-            if(json.name){
+            if(json.cod === 200){
+                console.log(`Datos obtenidos para ${json.name}, ${json.sys.country}`);
                 const datos = new Datos(json);
                 datos.setearTags(elementos, "img-clima-icono", "iframe-mapa", "AIzaSyAIB0EP17T743hCNhKMD_KJq0yS7iQdV1M");
                 inputCiudad.value = `${json.name}, ${json.sys.country}`;
@@ -49,20 +50,20 @@ btnCiudad.addEventListener("click", (e) => {
         .catch(err => {
             console.error("Error: " + err);
             modal.quitarModal();
-            modal.mostrarInfo("Error de localización", "No se encontró la ciudad.");
+            modal.mostrarInfo("Ocurrió un error", "No se pudo obtener los datos del clima.");
             main.classList.remove("visible");
         })        
 
     }else{
         console.warn("Debés colocar los datos de la siguiente manera: ciudad, estado, país.");
-        modal.mostrarInfo("Datos erróneos", "Debés colocar los datos de la siguiente manera: ciudad, estado, país.");
+        modal.mostrarInfo("Datos erróneos", "Debés colocarlos de la siguiente manera: ciudad, estado, país.");
         inputCiudad.classList.add("error");
         main.classList.remove("visible");
     }
 })
 
 if(datosLocal) {
-    let parse = JSON.parse(datosLocal); 
+    let parse = JSON.parse(datosLocal);
     const datos = new Datos(parse, false);
     datos.setearTags(elementos, "img-clima-icono", "iframe-mapa", "AIzaSyAIB0EP17T743hCNhKMD_KJq0yS7iQdV1M");
     inputCiudad.value = `${parse.ciudad}, ${parse.pais}`;
