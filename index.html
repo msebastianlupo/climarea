@@ -5,13 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matías Godoy, Cátedra PWA</title>
+    <link rel="stylesheet" href="css-ft/styles.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
 </head>
 <body>
     <header>
+        <nav>
+            <ul class="menu-lista">
+                <li><a href="#"><img id="logo" src="img/logo.png" alt="logo climarea"></a></li>
+                <li id="brand">Climarea</li>
+                <li><a href="#"><img id="info" src="img/info.png" alt="Información sobre la app"></a></li>
+            </ul>
+        </nav>
+            <div id="buscador-cont">
+                <input id="input-ciudad" type="search" placeholder="Introducí una ciudad"><button id="btn-ciudad" tabindex="-1">Actualizar</button>
+            </div>
     </header>
     <main>
-        
+        <h1 id="temperatura"></h1>
+        <h2 id="descripcion"></h2>
+        <div id="temp-cont">
+            <img id="img-clima-icono" src="" alt="icono-clima">
+            <div id="temp-min-max-cont">
+                <h2 id="minima"></h2>
+                <h2 id="maxima"></h2>
+            </div>
+        </div>
+        <div id="mas-detalles-cont">
+            <div id="caja-termica">
+                <h3>S. Termica</h3>
+                <p id="termica"></p>
+            </div>
+            <div id="caja-presion">
+                <h3>Presión</h3>
+                <p id="presion"></p>
+            </div>
+            <div id="caja-humedad">
+                <h3>Humedad</h3>
+                <p id="humedad"></p>
+            </div>
+            <div id="caja-viento">
+                <h3>Viento</h3>
+                <p id="viento"></p>
+            </div>
+        </div>
+        <iframe id="iframe-mapa" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src=""></iframe>
     </main>
-    <footer></footer>
+    <footer>&copy; 2023 - Matías Godoy</footer>
+    <script src="js/datos.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
